@@ -1,3 +1,5 @@
+![pinout](files/pinout.png)
+
 ## Output Devices - LED
 #### 1. [MCU 3.3V pin driven LED circuit](lessons/lesson01-01.md)
 #### 2. [MicroPython driven LED circuit](lessons/lesson01-02.md)
