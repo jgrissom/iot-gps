@@ -3,38 +3,5 @@
 #### Materials
  - Assembled circuit from previous lesson
 
-#### Code
-```Python
-# main.py
-
-from machine import Pin
-import asyncio
-from async_button import Pushbutton
-
-def handle_press():
-    print('press')
-    led.on()
-    
-def handle_long():
-    print('long')
-    led.off()
-
-async def main():
-    while True:
-        await asyncio.sleep(.1)
-
-if __name__ == '__main__':
-    try:
-        btn = Pushbutton( Pin(8, Pin.IN, Pin.PULL_UP) )
-        btn.press_func(handle_press)
-        btn.long_func(handle_long)
-        
-        led = Pin(9, Pin.OUT)
-        asyncio.run(main())
-    finally:
-        led.off()
-        print('goodbye')
-```
-
 #### Instructions
- - Modify the code in main.py and test in Thonny
+ - Modify the code in [main.py](https://github.com/jgrissom/iot-gps/commit/9cebe93c902d55cf2d9272ee1d9b1274665a4a55) and test in Thonny
