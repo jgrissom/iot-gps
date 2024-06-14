@@ -1,6 +1,6 @@
 # main.py
 
-from machine import Pin
+from machine import Pin, UART
 import asyncio
 from async_button import Pushbutton
 
@@ -14,7 +14,13 @@ def handle_long():
 
 async def main():
     while True:
-        await asyncio.sleep(.1)
+        length = gps_module.any()
+        if length > 0:
+            b = gps_module.read(length)
+            print(b)
+            break
+        
+        await asyncio.sleep(.5)
 
 if __name__ == '__main__':
     try:
@@ -23,6 +29,9 @@ if __name__ == '__main__':
         btn.long_func(handle_long)
         
         led = Pin(9, Pin.OUT)
+        
+        gps_module = UART(1, baudrate=9600, rx=Pin(44))
+        
         asyncio.run(main())
     finally:
         led.off()
