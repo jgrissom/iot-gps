@@ -1,6 +1,8 @@
 # main.py
 
-from machine import Pin, UART
+from machine import Pin, UART, SoftI2C
+import ssd1306
+from micropyGPS import MicropyGPS
 import asyncio
 from async_button import Pushbutton
 
@@ -17,8 +19,20 @@ async def main():
         length = gps_module.any()
         if length > 0:
             b = gps_module.read(length)
-            print(b)
-            break
+            for x in b:
+                msg = my_gps.update(chr(x))
+        latitude = my_gps.convert(my_gps.latitude)
+        longitude = my_gps.convert(my_gps.longitude)
+        satellites = my_gps.satellites_in_use
+        
+        oled.fill(0)
+        if (latitude == None or longitude == None):
+            oled.text("No Data", 0, 0)
+        else:
+            oled.text('Lat:'+ latitude, 0, 0)
+            oled.text('Lng:'+ longitude, 0, 11)
+            oled.text('Satellites:' + str(satellites), 0, 22)
+        oled.show()
         
         await asyncio.sleep(.5)
 
@@ -31,6 +45,10 @@ if __name__ == '__main__':
         led = Pin(9, Pin.OUT)
         
         gps_module = UART(1, baudrate=9600, rx=Pin(44))
+        my_gps = MicropyGPS()
+        
+        i2c = SoftI2C(scl=Pin(6), sda=Pin(5))
+        oled = ssd1306.SSD1306_I2C(128, 64, i2c)
         
         asyncio.run(main())
     finally:
