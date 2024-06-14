@@ -10,15 +10,6 @@
 # main.py
 
 import led
-led.blink(7)
-```
- - Save the file to the MicroController as main.py
- - Press Ctrl + D (to soft reboot the MicroController)
- - Modify the program:
-```Python
-# main.py
-
-import led
 
 if __name__ == '__main__':
     try:
@@ -26,5 +17,6 @@ if __name__ == '__main__':
     finally:
         print('goodbye')
 ```
+ - Save the file to the MicroController as main.py
  - Press Ctrl + D (to soft reboot the MicroController)
  - Power the MCU using the USB battery
