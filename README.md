@@ -1,5 +1,7 @@
 ![pinout](files/pinout.png)
 
+## [How to use a Breadboard](https://www.youtube.com/watch?v=6WReFkfrUIk&t=723s)
+
 ## Output Devices - LED
 #### 1. [MCU 3.3V pin driven LED circuit](lessons/lesson01-01.md)
 #### 2. [MicroPython driven LED circuit](lessons/lesson01-02.md)
