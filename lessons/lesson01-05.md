@@ -29,7 +29,7 @@ def blink(n):
  - Save the file to the MicroController as led.py
  - Using the REPL, import the file
 ```Python
-import led
+from led import blink
 ```
   - Using the REPL, call the blink function
 ```Python
