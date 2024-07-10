@@ -9,7 +9,7 @@
 ```Python
 # main.py
 
-from led import blink
+import led
 
 if __name__ == '__main__':
     try:
