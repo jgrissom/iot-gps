@@ -8,7 +8,7 @@
 
 #### Code
 ```Python
-from machine import SoftI2C
+from machine import SoftI2C, Pin
 import ssd1306
 i2c = SoftI2C(scl=Pin(6), sda=Pin(5))
 oled = ssd1306.SSD1306_I2C(128, 64, i2c)
